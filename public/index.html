@@ -12,7 +12,14 @@
     <h1>Design Your Whip Handle!</h1>
     <input type="text" placeholder="Color 1" ng-model="vm.color1" >
     <input type="text" placeholder="Color 2" ng-model="vm.color2"><br>
+    
+    <button ng-click="vm.accentPattern(vm.color1, vm.color2)">Accent Pattern</button>
+    <button ng-click="vm.verticalStripPattern(vm.color1, vm.color2)">Vertical Strip Pattern</button>
     <button ng-click="vm.boxPattern(vm.color1, vm.color2)">Box Pattern</button>
+    <button ng-click="vm.egyptianEyePattern(vm.color1, vm.color2)">Egyptian Eye Pattern</button>
+    <button ng-click="vm.emeraldPattern(vm.color1, vm.color2)">Emerald Pattern</button>
+    <button ng-click="vm.celticPattern(vm.color1, vm.color2)">Celtic Pattern</button>
+
     <canvas id="myCanvas" width="256" height="512"></canvas>
     <canvas id="materialCanvas" width="400" height="1000"></canvas>
 </div>

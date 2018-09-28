@@ -17,7 +17,7 @@ scene.add(light);
 let light1 = new THREE.PointLight(0xffffff, .5);
 scene.add(light1);
 
-
+//initial creation of shape
 let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
 let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
 let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
@@ -42,39 +42,97 @@ app.controller('HandleDesignController', [function () {
 	vm.color1 = '';
 	vm.color2 = '';
 
+	//initial render
 	let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
 	let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
 	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 	handle = new THREE.Mesh(geometry, material);
 	scene.add(handle);
-
+	//animation
 	requestAnimationFrame(render);
-
 	function render() {
 		handle.rotation.y += .01;
 		handle.rotation.x += 0.00;
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
-	
+
 	vm.boxPattern = function (color1, color2) {
-		console.log('in vm.boxPattern');
+		//render canvas
 		boxPattern(color1, color2);
-		//remove geometry
+		//remove old handle
 		scene.remove(handle);
-		//remake geometry
+		//remake hendle
 		let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
 		let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 		let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
-		vm.handle = new THREE.Mesh(geometry, material);
-		scene.add(vm.handle);
-		
-		requestAnimationFrame(render);
-		// function render() {
-		// 	handle.rotation.y += .01;
-		// 	handle.rotation.x += 0.00;
-		// 	renderer.render(scene, camera);
-		// 	requestAnimationFrame(render);
-		// }
+		handle = new THREE.Mesh(geometry, material);
+		scene.add(handle);
 	}
-	}]);
+
+	vm.accentPattern = function (color1, color2) {
+		//render canvas
+		accentPattern(color1, color2);
+		//remove old handle
+		scene.remove(handle);
+		//remake hendle
+		let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+		let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+		let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
+		handle = new THREE.Mesh(geometry, material);
+		scene.add(handle);
+	}
+
+	vm.egyptianEyePattern = function (color1, color2) {
+		//render canvas
+		egyptianEyePattern(color1, color2);
+		//remove old handle
+		scene.remove(handle);
+		//remake hendle
+		let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+		let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+		let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
+		handle = new THREE.Mesh(geometry, material);
+		scene.add(handle);
+	}
+
+	vm.verticalStripPattern = function (color1, color2) {
+		//render canvas
+		verticalStripPattern(color1, color2);
+		//remove old handle
+		scene.remove(handle);
+		//remake hendle
+		let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+		let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+		let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
+		handle = new THREE.Mesh(geometry, material);
+		scene.add(handle);
+	}
+
+	vm.emeraldPattern = function (color1, color2) {
+		//render canvas
+		emeraldPattern(color1, color2);
+		//remove old handle
+		scene.remove(handle);
+		//remake hendle
+		let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+		let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+		let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
+		handle = new THREE.Mesh(geometry, material);
+		scene.add(handle);
+	}
+
+	vm.celticPattern = function (color1, color2) {
+		//render canvas
+		celticPattern(color1, color2);
+		//remove old handle
+		scene.remove(handle);
+		//remake hendle
+		let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+		let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+		let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
+		handle = new THREE.Mesh(geometry, material);
+		scene.add(handle);
+	}
+	
+}]);
