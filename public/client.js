@@ -11,10 +11,10 @@ let camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHei
 camera.position.set(0, 0, 100);
 let scene = new THREE.Scene();
 
-let light = new THREE.AmbientLight(0xffffff, .5);
+let light = new THREE.AmbientLight(0xffffff, .9);
 scene.add(light);
 
-let light1 = new THREE.PointLight(0xffffff, .5);
+let light1 = new THREE.PointLight(0xffffff, .75);
 scene.add(light1);
 
 //initial creation of shape
