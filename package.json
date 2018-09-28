@@ -4,6 +4,7 @@
   "description": "",
   "main": "canvasrenderer.js",
   "scripts": {
+    "start": "server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,7 @@
   "homepage": "https://github.com/atfieldson/three-js-handle-maker#readme",
   "dependencies": {
     "express": "^4.16.3"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }

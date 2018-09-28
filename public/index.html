@@ -7,13 +7,18 @@
     <script src ="three.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <h1>ThreeJS Stuff</h1>
-    <canvas id="myCanvas"></canvas>
+<body  ng-app="HandleDesignApp">
+    <div ng-controller="HandleDesignController as vm">
+    <h1>Design Your Whip Handle!</h1>
+    <input type="text" placeholder="Color 1" ng-model="vm.color1" >
+    <input type="text" placeholder="Color 2" ng-model="vm.color2"><br>
+    <button ng-click="vm.boxPattern(vm.color1, vm.color2)">Box Pattern</button>
+    <canvas id="myCanvas" width="256" height="512"></canvas>
     <canvas id="materialCanvas" width="400" height="1000"></canvas>
-
+</div>
 </body>
 </html>
 <script src ="canvasrenderer.js"></script>
 <script src ="three.js"></script>
+<script src="vendors/angular.min.js"></script>
 <script src ="client.js"></script>
