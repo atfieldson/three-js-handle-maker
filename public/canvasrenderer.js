@@ -1,8 +1,16 @@
 let canvas = document.getElementById('materialCanvas');
 let c = canvas.getContext('2d');
 
-let color1='blue'
-let color2='orange'
+var img=document.getElementById("scarlet");
+var scarlet=c.createPattern(img,"repeat");
+
+var img=document.getElementById("turquoise");
+var turquoise=c.createPattern(img,"repeat");
+
+
+let color1=turquoise;
+let color2=scarlet;
+
 
 
 boxPattern = function (color1, color2) {
@@ -455,4 +463,4 @@ verticalStripPattern = function (color1, color2) {
     }//end for j
 }//end vertical strip
 
-verticalStripPattern(color1, color2)
+celticPattern(color1, color2)
