@@ -463,4 +463,4 @@ verticalStripPattern = function (color1, color2) {
     }//end for j
 }//end vertical strip
 
-celticPattern(color1, color2)
+emeraldPattern(color1, color2)

@@ -3,38 +3,67 @@ console.log('js');
 let app = angular.module('HandleDesignApp', []);
 
 let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('myCanvas') });
-renderer.setClearColor(0x0088ff);
+let camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 2, 1000);
+controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+renderer.setClearColor(0x000000);
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-let camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 2, 1000);
 camera.position.set(0, 0, 100);
 let scene = new THREE.Scene();
 
-let light = new THREE.AmbientLight(0xffffff, .7);
+controls = new THREE.OrbitControls(camera);
+controls.target.set(0, 0, 0)
+
+
+
+
+let light = new THREE.AmbientLight(0xffffff, .3);
 scene.add(light);
 
-let light1 = new THREE.PointLight(0xffffff, .9);
+let light1 = new THREE.PointLight(0xffffff, .6);
+light1.position.set(-50, -15, 15)
 scene.add(light1);
 
+let light2 = new THREE.PointLight(0xffffff, .6);
+light2.position.set(50, 15, 15)
+scene.add(light2);
+
+//WhipWor
+let WWLogo = new THREE.TextureLoader().load("ww.jpg");
+
+let geoLeftWW = new THREE.PlaneBufferGeometry(50, 50, 8, 8);
+let matLeftWW = new THREE.MeshPhongMaterial({ color: 0xffffff, map: WWLogo });
+let plane = new THREE.Mesh(geoLeftWW, matLeftWW);
+plane.position.set(-35, 0, -15)
+plane.rotation.y = -12;
+
+let geoRightWW = new THREE.PlaneBufferGeometry(50, 50, 8, 8);
+let matRightWW = new THREE.MeshPhongMaterial({ color: 0xffffff, map: WWLogo });
+let plane1 = new THREE.Mesh(geoRightWW, matRightWW);
+plane1.position.set(35, 0, -15)
+plane1.rotation.y = 12;
+
+let geoFloor = new THREE.PlaneBufferGeometry(800, 500, 8, 8);
+let matFloor = new THREE.MeshStandardMaterial({ color: 0xffffff });
+let floor = new THREE.Mesh(geoFloor, matFloor);
+floor.position.set(-0, -20, -400)
+// floor.rotation.x= -1;
+
+scene.add(plane, plane1, floor);
 //initial creation of shape
 let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
 let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
 let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 
-// let handle = new THREE.Mesh(geometry, material);
-// scene.add(handle);
+requestAnimationFrame(render);
 
-// requestAnimationFrame(render);
+function render() {
+	renderer.render(scene, camera);
+	requestAnimationFrame(render);
+}
 
-// function render(){
-// 	handle.rotation.y += .01;
-// 	handle.rotation.x += 0.00;
-// 	renderer.render(scene, camera);
-//     requestAnimationFrame(render);
-// }
-
-// renderer.render(scene, camera)
 
 app.controller('HandleDesignController', [function () {
 	console.log('in HandleDesignController');
@@ -47,15 +76,10 @@ app.controller('HandleDesignController', [function () {
 	let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
 	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 	handle = new THREE.Mesh(geometry, material);
+	handle.rotation.y = Math.PI;
 	scene.add(handle);
-	//animation
-	requestAnimationFrame(render);
-	function render() {
-		handle.rotation.y += .01;
-		handle.rotation.x += 0.00;
-		renderer.render(scene, camera);
-		requestAnimationFrame(render);
-	}
+
+	renderer.render(scene, camera);
 
 	vm.boxPattern = function (color1, color2) {
 		//render canvas
@@ -134,5 +158,5 @@ app.controller('HandleDesignController', [function () {
 		handle = new THREE.Mesh(geometry, material);
 		scene.add(handle);
 	}
-	
+
 }]);
