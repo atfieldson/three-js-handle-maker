@@ -16,9 +16,7 @@ let scene = new THREE.Scene();
 controls = new THREE.OrbitControls(camera);
 controls.target.set(0, 0, 0)
 
-
-
-
+//lights
 let light = new THREE.AmbientLight(0xffffff, .3);
 scene.add(light);
 
@@ -52,10 +50,11 @@ floor.position.set(-0, -20, -400)
 // floor.rotation.x= -1;
 
 scene.add(plane, plane1, floor);
-//initial creation of shape
-let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
-let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
-let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+
+// //initial creation of handle, now in controller
+// let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+// let geometry = new THREE.CylinderGeometry(4, 4, 200, 16);
+// let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 
 requestAnimationFrame(render);
 
@@ -73,7 +72,7 @@ app.controller('HandleDesignController', [function () {
 
 	//initial render
 	let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
-	let geometry = new THREE.CylinderGeometry(4, 4, 50, 16);
+	let geometry = new THREE.CylinderGeometry(4, 4, 80, 16);
 	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 	handle = new THREE.Mesh(geometry, material);
 	handle.rotation.y = Math.PI;

@@ -1,29 +1,29 @@
 let canvas = document.getElementById('materialCanvas');
 let c = canvas.getContext('2d');
 
-var img=document.getElementById("scarlet");
-var scarlet=c.createPattern(img,"repeat");
+var img = document.getElementById("scarlet");
+var scarlet = c.createPattern(img, "repeat");
 
-var img=document.getElementById("turquoise");
-var turquoise=c.createPattern(img,"repeat");
+var img = document.getElementById("turquoise");
+var turquoise = c.createPattern(img, "repeat");
 
 
-let color1=turquoise;
-let color2=scarlet;
+let color1 = turquoise;
+let color2 = scarlet;
 
 
 
 boxPattern = function (color1, color2) {
-    
+
     let bw = 400;
     let b16 = bw / 16;
     let pattern1 = [0, 1, 4, 5, 8, 9, 12, 13, 16];
     let pattern2 = [0, 3, 4, 7, 8, 11, 12, 15, 16]
-    let rowPattern1 = [-12, -8, -4, 0, 4, 8, 12, 16, 20]
-    let rowPattern2 = [-11, -7, -3, 1, 5, 9, 13, 17, 21]
-    let rowPattern3 = [-10, -6, -2, 2, 6, 10, 14, 18, 22]
+    let rowPattern1 = [-12, -8, -4, 0, 4, 8, 12, 16, 20, 24, 28, 32, 36]
+    let rowPattern2 = [-11, -7, -3, 1, 5, 9, 13, 17, 21, 25, 29, 33, 37]
+    let rowPattern3 = [-10, -6, -2, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38]
 
-    for (j = -b16 * 16; j <= b16 * 40; j += b16 * 2) {
+    for (j = -b16 * 16; j <= b16 * 62; j += b16 * 2) {
         for (let i = -b16 * 8; i <= bw * 2; i += b16) {
             console.log('hello');
             c.beginPath();
@@ -68,10 +68,10 @@ boxPattern = function (color1, color2) {
 accentPattern = function (color1, color2) {
     let bw = 400;
     let b16 = bw / 16;
-    let pattern1 = [3, 4, 11, 12];
-    let row1 = [0, 1, 8, 9, 16, 17];
+    let pattern1 = [3, 4, 11, 12, 19, 20, 27, 28];
+    let row1 = [0, 1, 8, 9, 16, 17, 24, 25];
 
-    for (j = -b16 * 16; j <= b16 * 40; j += b16 * 2) {
+    for (j = -b16 * 16; j <= b16 * 62; j += b16 * 2) {
         for (let i = -b16 * 8; i <= bw * 2; i += b16) {
             console.log('hello');
             c.beginPath();
@@ -81,7 +81,7 @@ accentPattern = function (color1, color2) {
             c.lineTo(i + b16, i + j + b16)
             c.closePath();
             c.stroke();
-            if (row1.includes(j/ (b16*2))){
+            if (row1.includes(j / (b16 * 2))) {
                 if (pattern1.includes(i / b16)) {
                     c.fillStyle = color2;
                 } else {
@@ -98,12 +98,13 @@ accentPattern = function (color1, color2) {
 celticPattern = function (color1, color2) {
     let bw = 400;
     let b16 = bw / 16;
-    let pattern1 = [16];
-    let pattern2 = [15, 16];
-    let pattern3 = [12, 13, 16];
-    let pattern4 = [11, 12, 15, 16];
-    let pattern5 = [8, 9, 16];
-    let pattern6 = [7, 8, 15, 16];
+    
+    //box pattern
+    let pattern1 = [0, 1, 4, 5, 8, 9, 12, 13, 16];
+    let pattern2 = [0, 3, 4, 7, 8, 11, 12, 15, 16]
+    //celtic pattern
+    let pattern5 = [0, 1, 4, 5, 8, 9, 16];
+    let pattern6 = [0, 3 ,4 , 7, 8, 15, 16];
     let pattern7 = [0, 1, 4, 5, 8, 9, 10, 11, 12, 16];
     let pattern8 = [0, 3, 4, 7, 11, 15, 16];
     let pattern9 = [0, 1, 6, 8, 9, 10, 11, 12, 13, 16];
@@ -123,12 +124,14 @@ celticPattern = function (color1, color2) {
     let pattern23 = [0, 4, 5, 6, 7, 8, 11, 12, 15, 16];
     let pattern24 = [0, 1, 8, 9, 12, 13, 16];
     let pattern25 = [0, 7, 8, 11, 12, 15, 16];
-    let pattern26 = [0, 1, 4, 5, 8, 9, 12, 13, 16];
-    let pattern27 = [0, 3, 4, 7, 8, 11, 12];
-    let pattern28 = [0, 1, 4, 5, 8, 9];
-    let pattern29 = [0, 3, 4, 7, 8]
+    
+    //box rows
+    row1= [-8, -4, 21, 25, 29];
+    row2= [-7, -3, 22, 26, 30];
+    row3= [-6, -2, 23, 27, 31];
+    row4= [-5, -1, 24, 28, 32];
 
-    for (j = -b16 * 16; j <= b16 * 40; j += b16 * 2) {
+    for (j = -b16 * 16; j <= b16 * 62; j += b16 * 2) {
         for (let i = -b16 * 8; i <= bw * 2; i += b16) {
             console.log('hello');
             c.beginPath();
@@ -138,181 +141,158 @@ celticPattern = function (color1, color2) {
             c.lineTo(i + b16, i + j + b16)
             c.closePath();
             c.stroke();
-            if (j / (b16 * 2) == -8) {
-                if (pattern1.includes(i / b16)) {
+           
+            if (row1.includes(j / (b16 * 2))){
+                if (pattern1.includes(i / b16)){
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == -7) {
-                if (pattern2.includes(i / b16)) {
+             } else if (row2.includes(j / (b16 * 2))){
+                if (pattern2.includes(i / b16)){
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
-                }
-            } else if (j / (b16 * 2) == -6) {
-                if (pattern3.includes(i / b16)) {
+                }  
+            } else if (row3.includes(j / (b16 * 2))){
+                if (pattern1.includes(i / b16)){
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
-                }
-            } else if (j / (b16 * 2) == -5) {
-                if (pattern4.includes(i / b16)) {
+                }   
+            } else if (row4.includes(j / (b16 * 2))){
+                if (pattern2.includes(i / b16)){
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
-                }
-            } else if (j / (b16 * 2) == -4) {
+                }          
+            } else if (j / (b16 * 2) == 0) {
                 if (pattern5.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == -3) {
+            } else if (j / (b16 * 2) == 1) {
                 if (pattern6.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == -2) {
+            } else if (j / (b16 * 2) == 2) {
                 if (pattern7.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == -1) {
+            } else if (j / (b16 * 2) == 3) {
                 if (pattern8.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 0) {
+            } else if (j / (b16 * 2) == 4) {
                 if (pattern9.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 1) {
+            } else if (j / (b16 * 2) == 5) {
                 if (pattern10.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 2) {
+            } else if (j / (b16 * 2) == 6) {
                 if (pattern11.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 3) {
+            } else if (j / (b16 * 2) == 7) {
                 if (pattern12.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 4) {
+            } else if (j / (b16 * 2) == 8) {
                 if (pattern13.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 5) {
+            } else if (j / (b16 * 2) == 9) {
                 if (pattern14.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 6) {
+            } else if (j / (b16 * 2) == 10) {
                 if (pattern15.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 7) {
+            } else if (j / (b16 * 2) == 11) {
                 if (pattern16.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 8) {
+            } else if (j / (b16 * 2) == 12) {
                 if (pattern17.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 9) {
+            } else if (j / (b16 * 2) == 13) {
                 if (pattern18.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 10) {
+            } else if (j / (b16 * 2) == 14) {
                 if (pattern19.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 11) {
+            } else if (j / (b16 * 2) == 15) {
                 if (pattern20.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 12) {
+            } else if (j / (b16 * 2) == 16) {
                 if (pattern21.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 13) {
+            } else if (j / (b16 * 2) == 17) {
                 if (pattern22.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 14) {
+            } else if (j / (b16 * 2) == 18) {
                 if (pattern23.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 15) {
+            } else if (j / (b16 * 2) == 19) {
                 if (pattern24.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 16) {
+            } else if (j / (b16 * 2) == 20) {
                 if (pattern25.includes(i / b16)) {
                     c.fillStyle = color1;
                 } else {
                     c.fillStyle = color2;
                 }
-            } else if (j / (b16 * 2) == 17) {
-                if (pattern26.includes(i / b16)) {
-                    c.fillStyle = color1;
-                } else {
-                    c.fillStyle = color2;
-                }
-            } else if (j / (b16 * 2) == 18) {
-                if (pattern27.includes(i / b16)) {
-                    c.fillStyle = color1;
-                } else {
-                    c.fillStyle = color2;
-                }
-            } else if (j / (b16 * 2) == 19) {
-                if (pattern28.includes(i / b16)) {
-                    c.fillStyle = color1;
-                } else {
-                    c.fillStyle = color2;
-                }
-            } else {
-                if (pattern29.includes(i / b16)) {
-                    c.fillStyle = color1;
-                } else {
-                    c.fillStyle = color2;
-                }
-            }
+            }           
             c.fill();
         } //end for i
     }//end for j
@@ -328,13 +308,13 @@ egyptianEyePattern = function (color1, color2) {
     let pattern4 = [1, 6, 8, 10, 15];
     let pattern5 = [0, 5, 9, 14, 16];
 
-    let row1 = [-10, -5, 0, 5, 10, 15];
-    let row2 = [-9, -4, 1, 6, 11, 16];
-    let row3 = [-8, -3, 2, 7, 12, 17];
-    let row4 = [-7, -2, 3, 8, 13, 18];
+    let row1 = [-10, -5, 0, 5, 10, 15, 20, 25, 30];
+    let row2 = [-9, -4, 1, 6, 11, 16, 21, 26, 31];
+    let row3 = [-8, -3, 2, 7, 12, 17, 22, 27, 32];
+    let row4 = [-7, -2, 3, 8, 13, 18, 23, 28];
     // let row5 = [4];
     //row 5 is the else 
-    for (j = -b16 * 16; j <= b16 * 40; j += b16 * 2) {
+    for (j = -b16 * 16; j <= b16 * 62; j += b16 * 2) {
         for (let i = -b16 * 8; i <= bw * 2; i += b16) {
             console.log('hello');
             c.beginPath();
@@ -394,10 +374,10 @@ emeraldPattern = function (color1, color2) {
     let pattern2 = [1, 3, 4, 7, 9, 11, 12, 15];
     let pattern3 = [1, 4, 5, 7, 9, 12, 13, 15];
     let pattern4 = [0, 3, 5, 7, 8, 11, 13, 15, 16];
-    let row1 = [-16, -12, -8, -4, 0, 4, 8, 12, 16, 20, 24, 28, 32, 36];
-    let row2 = [-15, -11, -7, -3, 1, 5, 9, 13, 17];
-    let row3 = [-14, -10, -6, -2, 2, 6, 10, 14, 18];
-    for (j = -b16 * 16; j <= b16 * 40; j += b16 * 2) {
+    let row1 = [-16, -12, -8, -4, 0, 4, 8, 12, 16, 20, 24, 28, 32];
+    let row2 = [-15, -11, -7, -3, 1, 5, 9, 13, 17, 21, 25, 29, 33];
+    let row3 = [-14, -10, -6, -2, 2, 6, 10, 14, 18, 22, 26, 30];
+    for (j = -b16 * 16; j <= b16 * 62; j += b16 * 2) {
         for (let i = -b16 * 8; i <= bw * 2; i += b16) {
             console.log('hello');
             c.beginPath();
@@ -443,7 +423,7 @@ verticalStripPattern = function (color1, color2) {
     let pattern1 = [0, 1, 4, 5, 8, 9, 12, 13, 16];
 
 
-    for (j = -b16 * 16; j <= b16 * 40; j += b16 * 2) {
+    for (j = -b16 * 16; j <= b16 * 62; j += b16 * 2) {
         for (let i = -b16 * 8; i <= bw * 2; i += b16) {
             console.log('hello');
             c.beginPath();
@@ -463,4 +443,4 @@ verticalStripPattern = function (color1, color2) {
     }//end for j
 }//end vertical strip
 
-emeraldPattern(color1, color2)
+celticPattern(color1, color2)
