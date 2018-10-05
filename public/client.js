@@ -13,7 +13,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.set(0, 0, 100);
 let scene = new THREE.Scene();
 
-controls = new THREE.OrbitControls(camera);
+controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0)
 
 //lights
@@ -28,7 +28,7 @@ let light2 = new THREE.PointLight(0xffffff, .6);
 light2.position.set(50, 15, 15)
 scene.add(light2);
 
-//WhipWor
+//WhipWorks logo
 let WWLogo = new THREE.TextureLoader().load("ww.jpg");
 
 let geoLeftWW = new THREE.PlaneBufferGeometry(50, 50, 8, 8);
@@ -70,14 +70,60 @@ app.controller('HandleDesignController', [function () {
 	vm.color1 = '';
 	vm.color2 = '';
 
-	//initial render
+	//handle
 	let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
 	let geometry = new THREE.CylinderGeometry(4, 4, 80, 16);
 	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
 	handle = new THREE.Mesh(geometry, material);
 	handle.rotation.y = Math.PI;
 	scene.add(handle);
+	
+	//Accent Knots
+	// HEEL
+	let geoHeel = new THREE.CylinderGeometry(5.4, 5.4, 10, 16);
+	let matHeel = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	heel = new THREE.Mesh(geoHeel, matHeel);
+	heel.position.y = -44;
+	scene.add(heel)
 
+	let geoHeelTop = new THREE.TorusGeometry(4.4, 1, 16, 16);
+	let matHeelTop = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	heelTop = new THREE.Mesh(geoHeelTop, matHeelTop);
+	heelTop.rotation.x = Math.PI/2;
+	heelTop.position.y = -39.1;
+	scene.add(heelTop)
+
+	let geoHeelBottom = new THREE.TorusGeometry(4.4, 1, 16, 16);
+	let matHeelBottom = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	let heelBottom = new THREE.Mesh(geoHeelBottom, matHeelBottom);
+	heelBottom.rotation.x = Math.PI/2;
+	heelBottom.position.y = -49.1;
+	scene.add(heelBottom)
+	//END HEEL 
+	//MID
+	let geoMid = new THREE.CylinderGeometry(5.4, 5.4, 6, 16);
+	let matMid = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	mid = new THREE.Mesh(geoMid, matMid);
+	mid.position.y = 40;
+	scene.add(mid)
+	
+	let geoMidTop = new THREE.TorusGeometry(4.4, 1, 16, 16);
+	let matMidTop = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	midTop = new THREE.Mesh(geoMidTop, matMidTop);
+	midTop.rotation.x = Math.PI/2;
+	midTop.position.y = 43;
+	scene.add(midTop)
+
+	let geoMidBottom = new THREE.TorusGeometry(4.4, 1, 16, 16);
+	let matMidBottom = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	midBottom = new THREE.Mesh(geoMidBottom, matMidBottom);
+	midBottom.rotation.x = Math.PI/2;
+	midBottom.position.y = 37;
+	scene.add(midBottom)
+	//END MID
+
+
+	//initial render
 	renderer.render(scene, camera);
 
 	vm.boxPattern = function (color1, color2) {
