@@ -31,6 +31,7 @@ scene.add(light2);
 //WhipWorks logo
 let WWLogo = new THREE.TextureLoader().load("ww.jpg");
 
+//Backgrounds
 let geoLeftWW = new THREE.PlaneBufferGeometry(50, 50, 8, 8);
 let matLeftWW = new THREE.MeshPhongMaterial({ color: 0xffffff, map: WWLogo });
 let plane = new THREE.Mesh(geoLeftWW, matLeftWW);
@@ -44,12 +45,14 @@ plane1.position.set(35, 0, -15)
 plane1.rotation.y = 12;
 
 let geoFloor = new THREE.PlaneBufferGeometry(800, 500, 8, 8);
-let matFloor = new THREE.MeshStandardMaterial({ color: 0xffffff });
+let matFloor = new THREE.MeshPhongMaterial({ color: 0xffffff, map: WWLogo });
 let floor = new THREE.Mesh(geoFloor, matFloor);
 floor.position.set(-0, -20, -400)
 // floor.rotation.x= -1;
 
 scene.add(plane, plane1, floor);
+
+
 
 // //initial creation of handle, now in controller
 // let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
@@ -69,22 +72,30 @@ app.controller('HandleDesignController', [function () {
 	let vm = this;
 	vm.color1 = '';
 	vm.color2 = '';
-
+	
 	//handle
 	let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
+
 	let geometry = new THREE.CylinderGeometry(4, 4, 80, 16);
-	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture, bumpMap : texture, roughness: 1 });
 	handle = new THREE.Mesh(geometry, material);
 	handle.rotation.y = Math.PI;
 	scene.add(handle);
 	
 	//Accent Knots
 	// HEEL
+	
+	let textureHeel = new THREE.CanvasTexture(canvas, document.getElementById('heelCanvas'));
+
 	let geoHeel = new THREE.CylinderGeometry(5.4, 5.4, 10, 16);
-	let matHeel = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
+	let matHeel = new THREE.MeshBasicMaterial({ color: 0xffffff, map: textureHeel, bumpMap: textureHeel });
 	heel = new THREE.Mesh(geoHeel, matHeel);
 	heel.position.y = -44;
 	scene.add(heel)
+
+	// let cubedude = new THREE.BoxGeometry(50, 50, 50);
+	// cube = new THREE.Mesh(cubedude, matHeel)
+	// scene.add(cube)
 
 	let geoHeelTop = new THREE.TorusGeometry(4.4, 1, 16, 16);
 	let matHeelTop = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
@@ -100,6 +111,7 @@ app.controller('HandleDesignController', [function () {
 	heelBottom.position.y = -49.1;
 	scene.add(heelBottom)
 	//END HEEL 
+	
 	//MID
 	let geoMid = new THREE.CylinderGeometry(5.4, 5.4, 6, 16);
 	let matMid = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
@@ -122,7 +134,8 @@ app.controller('HandleDesignController', [function () {
 	scene.add(midBottom)
 	//END MID
 
-
+	
+	
 	//initial render
 	renderer.render(scene, camera);
 
