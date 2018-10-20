@@ -81,61 +81,7 @@ app.controller('HandleDesignController', [function () {
 	handle = new THREE.Mesh(geometry, material);
 	handle.rotation.y = Math.PI;
 	scene.add(handle);
-	
-	//Accent Knots
-	// HEEL
-	
-	let textureHeel = new THREE.CanvasTexture(canvas, document.getElementById('heelCanvas'));
 
-	let geoHeel = new THREE.CylinderGeometry(5.4, 5.4, 10, 16);
-	let matHeel = new THREE.MeshBasicMaterial({ color: 0xffffff, map: textureHeel, bumpMap: textureHeel });
-	heel = new THREE.Mesh(geoHeel, matHeel);
-	heel.position.y = -44;
-	scene.add(heel)
-
-	// let cubedude = new THREE.BoxGeometry(50, 50, 50);
-	// cube = new THREE.Mesh(cubedude, matHeel)
-	// scene.add(cube)
-
-	let geoHeelTop = new THREE.TorusGeometry(4.4, 1, 16, 16);
-	let matHeelTop = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
-	heelTop = new THREE.Mesh(geoHeelTop, matHeelTop);
-	heelTop.rotation.x = Math.PI/2;
-	heelTop.position.y = -39.1;
-	scene.add(heelTop)
-
-	let geoHeelBottom = new THREE.TorusGeometry(4.4, 1, 16, 16);
-	let matHeelBottom = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
-	let heelBottom = new THREE.Mesh(geoHeelBottom, matHeelBottom);
-	heelBottom.rotation.x = Math.PI/2;
-	heelBottom.position.y = -49.1;
-	scene.add(heelBottom)
-	//END HEEL 
-	
-	//MID
-	let geoMid = new THREE.CylinderGeometry(5.4, 5.4, 6, 16);
-	let matMid = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
-	mid = new THREE.Mesh(geoMid, matMid);
-	mid.position.y = 40;
-	scene.add(mid)
-	
-	let geoMidTop = new THREE.TorusGeometry(4.4, 1, 16, 16);
-	let matMidTop = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
-	midTop = new THREE.Mesh(geoMidTop, matMidTop);
-	midTop.rotation.x = Math.PI/2;
-	midTop.position.y = 43;
-	scene.add(midTop)
-
-	let geoMidBottom = new THREE.TorusGeometry(4.4, 1, 16, 16);
-	let matMidBottom = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture});
-	midBottom = new THREE.Mesh(geoMidBottom, matMidBottom);
-	midBottom.rotation.x = Math.PI/2;
-	midBottom.position.y = 37;
-	scene.add(midBottom)
-	//END MID
-
-	
-	
 	//initial render
 	renderer.render(scene, camera);
 
