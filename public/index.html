@@ -10,37 +10,35 @@
     <title>WhipWorks Handle Designer</title>
 </head>
 
-<body ng-app="HandleDesignApp">
-    <div ng-controller="HandleDesignController as vm">
-        <h1>Design Your Whip Handle!</h1>
+<!-- <body ng-app="HandleDesignApp">
+    <div ng-controller="HandleDesignController as vm"> -->
 
-        <input type="text" placeholder="Color 1" ng-model="vm.color1">
-        <input type="text" placeholder="Color 2" ng-model="vm.color2">
-        <button ng-click="vm.accentPattern(vm.color1, vm.color2)">Accent Pattern</button>
-        <button ng-click="vm.verticalStripPattern(vm.color1, vm.color2)">Vertical Strip Pattern</button>
-        <button ng-click="vm.boxPattern(vm.color1, vm.color2)">Box Pattern</button>
-        <button ng-click="vm.egyptianEyePattern(vm.color1, vm.color2)">Egyptian Eye Pattern</button>
-        <button ng-click="vm.emeraldPattern(vm.color1, vm.color2)">Emerald Pattern</button>
-        <button ng-click="vm.celticPattern(vm.color1, vm.color2)">Celtic Pattern</button>
-
+<body>
+    <div>
+        <div class="colorSelectorDiv">
+            <h1>Design Your Whip Handle!</h1>
+           <h2>If handle renders in white, please restart the page.  This is a bug I need to address.</h2>
+            <h3>You will pick your handle colors in this div</h3>
+            
+        </div>
         <div class="myCanvasContainer">
+            <div class="handleSelectorDiv">
+                <h3>Here you will select your handle design</h3>
+                <h3>Keep scrolling down if you would like to see<br> what the JSCanvas render looks like.</h3>
+            </div>
             <!-- Below width and height determines the size of canvas that will be RENDERED, the 
             stylesheet determines what will be shown on the screen. -->
             <canvas id="myCanvas" class="myCanvas" width="1000" height="1000"></canvas>
-            <canvas id="materialCanvas" width="400" height="1600"></canvas>
         </div>
-
+        <img src="paracord/waxed/rustRightWaxed.jpg" id="right" class="hidden"/>
+        <img src="paracord/waxed/emeraldGreenLeftWaxed.jpg" id="left" class="hidden"/>
         <canvas id="materialCanvas" width="400" height="1600"></canvas>
-        <img src="paracord/waxed/rustRightWaxed.jpg" id="right">
-        <img src="paracord/waxed/silverLeftWaxed.jpg" id="left">
-
 
     </div>
 </body>
 
 </html>
-<script src="three.js"></script>
-<script src="OrbitControls.js"></script>
-<script src="vendors/angular.min.js"></script>
+<script src="./vendors/three.js" ></script>
+<script src="./vendors/OrbitControls.js"></script>
 <script src="client.js"></script>
 <script src="canvasrenderer.js"></script>
