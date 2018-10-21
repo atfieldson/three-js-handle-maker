@@ -2,13 +2,28 @@ console.log('js');
 
 let app = angular.module('HandleDesignApp', []);
 
-let renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('myCanvas') });
-let camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 2, 1000);
+//-----------------------new scene renderer for changing size of screen----------------------------
+
+
+//-------------------------------------------------------------------------------------------------
+
+let myCanvas= document.getElementById('myCanvas')
+var gl = myCanvas.getContext("webgl"); //new!
+
+
+let renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
+myCanvas.width = 500; //new
+myCanvas.height = 500; //new
+
+renderer.setViewport(0, 0, 1000, 1000)
+
+//using clientWidth and height below is what allows the proportions to remain accurate, as distinct
+//using window.innerWidth and height.
+let camera = new THREE.PerspectiveCamera(35, myCanvas.clientWidth/myCanvas.clientHeight, 2, 1000)
 controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 renderer.setClearColor(0x000000);
 renderer.setPixelRatio(window.devicePixelRatio)
-renderer.setSize(window.innerWidth, window.innerHeight);
 
 camera.position.set(0, 0, 100);
 let scene = new THREE.Scene();
@@ -44,20 +59,9 @@ let plane1 = new THREE.Mesh(geoRightWW, matRightWW);
 plane1.position.set(35, 0, -15)
 plane1.rotation.y = 12;
 
-let geoFloor = new THREE.PlaneBufferGeometry(800, 500, 8, 8);
-let matFloor = new THREE.MeshPhongMaterial({ color: 0xffffff, map: WWLogo });
-let floor = new THREE.Mesh(geoFloor, matFloor);
-floor.position.set(-0, -20, -400)
-// floor.rotation.x= -1;
-
-scene.add(plane, plane1, floor);
 
 
-
-// //initial creation of handle, now in controller
-// let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
-// let geometry = new THREE.CylinderGeometry(4, 4, 200, 16);
-// let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture });
+scene.add(plane, plane1);
 
 requestAnimationFrame(render);
 
@@ -77,7 +81,7 @@ app.controller('HandleDesignController', [function () {
 	let texture = new THREE.CanvasTexture(canvas, document.getElementById('materialCanvas'));
 
 	let geometry = new THREE.CylinderGeometry(4, 4, 80, 16);
-	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture, bumpMap : texture, roughness: 1 });
+	let material = new THREE.MeshPhongMaterial({ color: 0xffffff, map: texture, bumpMap : texture });
 	handle = new THREE.Mesh(geometry, material);
 	handle.rotation.y = Math.PI;
 	scene.add(handle);

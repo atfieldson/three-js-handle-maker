@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src ="three.js"></script>
+    <script src="three.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>WhipWorks Handle Designer</title>
 </head>
-<body  ng-app="HandleDesignApp">
+
+<body ng-app="HandleDesignApp">
     <div ng-controller="HandleDesignController as vm">
-    <h1>Design Your Whip Handle!</h1> 
+        <h1>Design Your Whip Handle!</h1>
 
-    <input type="text" placeholder="Color 1" ng-model="vm.color1" >
-    <input type="text" placeholder="Color 2" ng-model="vm.color2">
-    <button ng-click="vm.accentPattern(vm.color1, vm.color2)">Accent Pattern</button>
-    <button ng-click="vm.verticalStripPattern(vm.color1, vm.color2)">Vertical Strip Pattern</button>
-    <button ng-click="vm.boxPattern(vm.color1, vm.color2)">Box Pattern</button>
-    <button ng-click="vm.egyptianEyePattern(vm.color1, vm.color2)">Egyptian Eye Pattern</button>
-    <button ng-click="vm.emeraldPattern(vm.color1, vm.color2)">Emerald Pattern</button>
-    <button ng-click="vm.celticPattern(vm.color1, vm.color2)">Celtic Pattern</button>
-    
-   
-    <canvas id="myCanvas"></canvas>
+        <input type="text" placeholder="Color 1" ng-model="vm.color1">
+        <input type="text" placeholder="Color 2" ng-model="vm.color2">
+        <button ng-click="vm.accentPattern(vm.color1, vm.color2)">Accent Pattern</button>
+        <button ng-click="vm.verticalStripPattern(vm.color1, vm.color2)">Vertical Strip Pattern</button>
+        <button ng-click="vm.boxPattern(vm.color1, vm.color2)">Box Pattern</button>
+        <button ng-click="vm.egyptianEyePattern(vm.color1, vm.color2)">Egyptian Eye Pattern</button>
+        <button ng-click="vm.emeraldPattern(vm.color1, vm.color2)">Emerald Pattern</button>
+        <button ng-click="vm.celticPattern(vm.color1, vm.color2)">Celtic Pattern</button>
 
-    <canvas id="materialCanvas" width="400" height="1600"></canvas>
-    <canvas id="heelCanvas" width="544" height="200"></canvas>
-    <img src="paracord/waxed/rustRightWaxed.jpg" id="right">
-    <img src="paracord/waxed/silverLeftWaxed.jpg" id="left">
+        <div class="myCanvasContainer">
+            <!-- Below width and height determines the size of canvas that will be RENDERED, the 
+            stylesheet determines what will be shown on the screen. -->
+            <canvas id="myCanvas" class="myCanvas" width="1000" height="1000"></canvas>
+            <canvas id="materialCanvas" width="400" height="1600"></canvas>
+        </div>
+
+        <canvas id="materialCanvas" width="400" height="1600"></canvas>
+        <img src="paracord/waxed/rustRightWaxed.jpg" id="right">
+        <img src="paracord/waxed/silverLeftWaxed.jpg" id="left">
 
 
-</div>
+    </div>
 </body>
+
 </html>
-<script src ="three.js"></script>
-<script src ="OrbitControls.js"></script>
+<script src="three.js"></script>
+<script src="OrbitControls.js"></script>
 <script src="vendors/angular.min.js"></script>
-<script src ="client.js"></script>
-<script src ="canvasrenderer.js"></script>
-
-
+<script src="client.js"></script>
+<script src="canvasrenderer.js"></script>
