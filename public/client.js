@@ -7,8 +7,8 @@ var gl = myCanvas.getContext("webgl"); //new!
 
 
 let renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
-myCanvas.width = 500; //new
-myCanvas.height = 500; //new
+// myCanvas.width = 500; //new
+// myCanvas.height = 500; //new
 
 renderer.setViewport(0, 0, 1000, 1000)
 
